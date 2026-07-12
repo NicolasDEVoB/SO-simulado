@@ -36,44 +36,46 @@ def shell():
         argumento = partes[1] if len(partes) > 1 else None
 
         # Orquestração dos comandos
-        if comando == "exit":
-            print("Desligando o sistema... Até logo!")
-            break
-            
-        elif comando == "help":
-            system.comando_ajuda()
-            
-        elif comando == "ls":
-            system.comando_ls()
-            
-        elif comando == "pwd":
-            system.comando_pwd()
-            
-        elif comando == "clear":
-            system.comando_limpar()
-            
-        elif comando == "cd":
-            if argumento:
-                system.comando_cd(argumento)
-            else:
-                print("Uso correto: cd <nome_do_diretorio>")
+        
+        match comando:
+            case "exit":
+                print("Desligando o sistema... Até logo!")
+                break
                 
-        elif comando == "create":
-            if argumento:
-                system.comando_criar(argumento)
-            else:
-                print("Uso correto: create <nome_do_arquivo.txt>")
+            case "help":
+                system.comando_ajuda()
                 
-        elif comando == "rm":
-            if argumento:
-                system.comando_rm(argumento)
-            else:
-                print("Uso correto: rm <nome_do_item>")
+            case "ls":
+                system.comando_ls()
                 
-        else:
-            if executar_app(comando, argumento):
-                continue
-            print(f"Comando '{comando}' não reconhecido. Digite 'help'.")
+            case "pwd":
+                system.comando_pwd()
+                
+            case "clear":
+                system.comando_limpar()
+                
+            case "cd":
+                if argumento:
+                    system.comando_cd(argumento)
+                else:
+                    print("Uso correto: cd <nome_do_diretorio>")
+                    
+            case "create":
+                if argumento:
+                    system.comando_criar(argumento)
+                else:
+                    print("Uso correto: create <nome_do_arquivo.txt>")
+                    
+            case "rm":
+                if argumento:
+                    system.comando_rm(argumento)
+                else:
+                    print("Uso correto: rm <nome_do_item>")
+                    
+            case _:
+                if executar_app(comando, argumento):
+                    continue
+                print(f"Comando '{comando}' não reconhecido. Digite 'help'.")
 
 
 def executar_app(comando, argumento):

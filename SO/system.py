@@ -55,8 +55,10 @@ def comando_ls():
                 print(f"📁 {item}/")
             else:
                 print(f"📄 {item}")
+
     except Exception as e:
         print(f"Erro ao listar diretório: {e}")
+
 
 def comando_pwd():
     """Mostra o diretório simulado atual."""
