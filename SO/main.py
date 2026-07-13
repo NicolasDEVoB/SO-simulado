@@ -86,6 +86,7 @@ def executar_app(comando, argumento):
 
     argumentos = [comando] + (argumento.split() if argumento else [])
     original_argv = sys.argv.copy()
+    
     try:
         sys.argv = argumentos
         runpy.run_path(app_caminho, run_name="__main__")
@@ -94,6 +95,7 @@ def executar_app(comando, argumento):
     finally:
         sys.argv = original_argv
     return True
+
 
 if __name__ == "__main__":
     shell()
